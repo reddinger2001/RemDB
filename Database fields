@@ -1,0 +1,78 @@
+
+## WD
+
+Name | Severity | CVSS v3 Age (days) | Published | First detected | Updated | Has Exploit | Has Known Threats | Has Associated Alerts | Related Software | Exposed Machines | Description
+--|--|--|--|--|--|--|--|--|--|--|--|
+CVE-2023-6873 | High 8.8 | 1 | 19 Dec, 2023 | 19 Dec, 2023 | 19 Dec, 2023 | FALSE | FALSE | FALSE | mozilla:firefox | | Memory safety bugs present in Firefox 120. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code.Memory safety bugs fixed in Firefox 121
+
+## Ne
+
+Plugin ID | CVE | CVSS v2.0 Base Score | Risk | Host | Protocol | Port | Name | Synopsis | Description | Solution | See Also | Plugin Output | CVSS v3.0 Base Score | Risk Factor
+--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+10114 |CVE-1999-0524|0|None|(ip)|icmp|0|ICMP Timestamp Request Remote Date Disclosure|It is possible to determine the exact time set on the remote host.|The remote host answers to an ICMP timestamp request.  This allows an attacker to know the date that is set on the targeted machine, which may assist an unauthenticated, remote attacker in defeating time-based authentication protocols. Timestamps returned from machines running Windows Vista / 7 / 2008 / 2008 R2 are deliberately incorrect, but usually within 1000 seconds of the actual system time. | | Filter out the ICMP timestamp requests (13), and the outgoing ICMP timestamp replies (14). The ICMP timestamps seem to be in little endian format (not in network format)|The remote clock is synchronized with the local clock.|0|None
+ 
+ 
+## Table Combinations and Breakouts
+
+- COMBINE WD Name and Ne CVE (If Ne CVE field is blank use Name field) INTO "Vuln Name"
+- COMBINE WD Severity and Ne CVSS v3.0 Base Score INTO "Severity (CVSS v3)"
+- COMBINE Description fields INTO "Description"
+- COMBINE Ne Host and WD Exposed Machines INTO "Host"
+- COMBINE WD Related Software with Ne Name from Nessus INTO "Software"
+
+Not populated by uploads, assessed by Security Personnel:
+ - "Exploitable" Values are (None, Public POC, Active)
+ - "Automatable" Values are (Yes, No)
+ - "Technical Impact" values are (Partial, Total)
+ - "Mission Prevalant" values are (Minimal, Support, Essential)
+ - "Mitigations" is Non-Populated for Security Personnel to fill out
+
+Calculated field: CISA Risk Cat (Track, Track*, Attend, Act)
+ - Calculations are as follows:
+
+ Exploitation|Automatable| Technical| Mission Prevalant|Decision
+ --|--|--|--|--|
+none |no |partial| low| Track
+none |no |partial| medium| Track
+none |no |partial| high| Track
+none |no |total| low| Track
+none |no |total| medium| Track
+none |no |total| high| Track*
+none |yes |partial| low| Track
+none |yes |partial| medium| Track
+none |yes |partial| high| Attend
+none |yes |total| low| Track
+none |yes |total| medium| Track
+none |yes |total| high| Attend
+poc |no |partial| low| Track
+poc |no |partial| medium| Track
+poc |no |partial| high| Track*
+poc |no |total| low| Track
+poc |no |total| medium| Track*
+poc |no |total| high| Attend
+poc |yes |partial| low| Track
+poc |yes |partial| medium| Track
+poc |yes |partial| high| Attend
+poc |yes |total| low| Track
+poc |yes |total| medium| Track*
+poc |yes |total| high| Attend
+active |no |partial| low| Track
+active |no |partial| medium| Track
+active |no |partial| high| Attend
+active |no |total| low| Track
+active |no |total| medium| Attend
+active |no |total| high| Act
+active |yes |partial| low| Attend
+active |yes |partial| medium| Attend
+active |yes |partial| high| Act
+active |yes |total| low| Attend
+active |yes |total| medium| Act
+active |yes |total| high| Act
+
+
+## Resulting Table
+
+Vuln Name | Severity (CVSS v3) | Description | Host | Software | Exploitable | Automatable | Technical Impact | Mission Prevalant |CISA Risk Cat. | Mitigations
+--|--|--|--|--|--|--|--|--|--|--|
+CVE-2023-6873|High 8.8|Memory safety bugs present in Firefox 120. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code.Memory safety bugs fixed in Firefox 121| (ip/machine name)|mozilla:firefox||||||
+CVE-1999-0524|0|The remote host answers to an ICMP timestamp request. This allows an attacker to know the date that is set on the targeted machine, which may assist an unauthenticated, remote attacker in defeating time-based authentication protocols. Timestamps returned from machines running Windows Vista / 7 / 2008 / 2008 R2 are deliberately incorrect, but usually within 1000 seconds of the actual system time.|(ip/machinename)|ICMP Timestamp Request Remote Date Disclosure||||||
